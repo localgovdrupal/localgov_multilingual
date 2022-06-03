@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the 
+ * LocalGov Services: Multilingual module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_services_multilingual_install() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_services_multilingual_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}

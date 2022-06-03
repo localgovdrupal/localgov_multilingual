@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Localgov Multilingual: Services module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_services_install() {
+  $config_factory = \Drupal::configFactory();
+
+  $services_landing_page_fields = [
+    'body',
+    'localgov_address',
+    'localgov_destinations',
+    'localgov_contact_us_online',
+    'localgov_email_address',
+    'localgov_facebook',
+    'localgov_address_first_line',
+    'localgov_hearing_difficulties_ph',
+    'localgov_link_to_map',
+    'localgov_opening_hours',
+    'localgov_other_team_contacts',
+    'localgov_phone',
+    'localgov_popular_topics',
+    'localgov_common_tasks',
+    'localgov_twitter',
+  ];
+
+  $services_sub_landing_page_fields = [
+    'body',
+    'localgov_topics',
+    'localgov_services_parent',
+  ];
+  
+  $services_page_fields = [
+    'body',
+    'localgov_download_links',
+    'localgov_services_parent',
+    'localgov_related_links',
+    'localgov_common_tasks',
+    'localgov_topic_classified',
+    'localgov_address',
+  ];
+
+  foreach ($services_landing_page_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_services_landing.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($services_sub_landing_page_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_services_sublanding.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($services_page_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_services_page.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_services_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
