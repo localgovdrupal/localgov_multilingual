@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Localgov Multilingual: Subsites module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_subsites_install() {
+  $config_factory = \Drupal::configFactory();
+
+  $subsites_overview_fields = [
+    'localgov_subsites_summary',
+    'localgov_subsites_theme',
+  ];
+
+  $subsites_page_fields = [
+    'localgov_subsites_summary',
+    'localgov_subsites_topic',
+    'localgov_subsites_parent',
+  ];
+  $subsites_overview_fields_false = [
+    'localgov_subsites_banner',
+    'localgov_subsites_content',
+  ];
+
+  $subsites_page_fields_false = [
+    'localgov_subsites_banner',
+    'localgov_subsites_content',
+  ];
+
+  foreach ($subsites_overview_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_subsites_overview.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($subsites_page_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_subsites_page.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($subsites_overview_fields_false as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_subsites_overview.' . $field);
+    $config->set('translatable', false);
+    $config->save(TRUE);
+  }
+  foreach ($subsites_page_fields_false as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_subsites_page.' . $field);
+    $config->set('translatable', false);
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_subsites_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
