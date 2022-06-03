@@ -1,0 +1,10 @@
+{
+  "name": "localgovdrupal/localgov_multilingual",
+  "type": "drupal-module",
+  "description": "LocalGov Drupal Multilingual",
+  "homepage": "https://github.com/localgovdrupal/localgov_multilingual",
+  "license": "GPL-2.0-or-later",
+  "require-dev": {
+      "localgovdrupal/localgov_core": "^2.1"
+  }
+}
