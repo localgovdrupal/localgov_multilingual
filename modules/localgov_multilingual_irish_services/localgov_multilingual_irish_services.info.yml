@@ -1,0 +1,10 @@
+name: "Localgov Multilingual: Irish Services"
+type: module
+description: Add multilingual capabilities to the Irish services catalogue fields.
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - localgovdrupal:localgov_services
+  - localgovdrupal:localgov_irish_service_catalogue
+  - localgovdrupal:localgov_multilingual
+  - localgovdrupal:localgov_multilingual_services

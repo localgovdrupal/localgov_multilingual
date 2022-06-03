@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Localgov Multilingual: Services module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_irish_services_install() {
+  $config_factory = \Drupal::configFactory();
+  $irish_services_landing_page_fields = [
+    'localgov_irish_service_category',
+    'localgov_irish_service_topic',
+    'localgov_irish_service_municipal',
+    'localgov_irish_service_type',
+    'localgov_irish_service_user_type',
+    'localgov_irish_service_reference',
+    'localgov_irish_service_lgma_id',
+  ];
+
+  $irish_services_sub_landing_page_fields = [
+    'localgov_irish_service_category',
+    'localgov_irish_service_topic',
+    'localgov_irish_service_municipal',
+    'localgov_irish_service_type',
+    'localgov_irish_service_user_type',
+    'localgov_irish_service_reference',
+    'localgov_irish_service_lgma_id',
+  ];
+  
+  $irish_services_page_fields = [
+    'localgov_irish_service_category',
+    'localgov_irish_service_topic',
+    'localgov_irish_service_municipal',
+    'localgov_irish_service_type',
+    'localgov_irish_service_user_type',
+    'localgov_irish_service_reference',
+    'localgov_irish_service_lgma_id',
+  ];
+
+  foreach ($irish_services_landing_page_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_services_landing.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($irish_services_sub_landing_page_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_services_sublanding.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($irish_services_page_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_services_page.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_irish_services_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
