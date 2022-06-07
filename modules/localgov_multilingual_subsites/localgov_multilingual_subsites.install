@@ -37,7 +37,6 @@ function localgov_multilingual_subsites_install() {
   // Paragraphs fields
   $paragraph_accordion_fields = [
     'localgov_heading_level',
-    'localgov_paragraphs',
     'localgov_title',
   ];
 
@@ -68,7 +67,6 @@ function localgov_multilingual_subsites_install() {
   $paragraph_box_link_listing_fields = [
     'localgov_box_listing_theme',
     'localgov_heading_level',
-    'localgov_paragraphs',
     'localgov_title',
   ];
   $paragraph_callout_box_fields = [
@@ -126,7 +124,6 @@ function localgov_multilingual_subsites_install() {
   ];
   $paragraph_featured_teasers_fields = [
     'localgov_heading_level',
-    'localgov_paragraphs',
     'localgov_title',
   ];
   $paragraph_from_library_fields = [
@@ -152,7 +149,6 @@ function localgov_multilingual_subsites_install() {
   ];
   $paragraph_key_contacts_fields = [
     'localgov_heading_level',
-    'localgov_paragraphs',
     'localgov_title',
   ];
 
@@ -180,42 +176,42 @@ function localgov_multilingual_subsites_install() {
 
   // Set paragraphs fields to be translatable
   foreach ($paragraph_accordion_fields as $field) {
-    $config = $config_factory->getEditable('field.field.node.localgov_accordion.' . $field);
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_accordion.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
   foreach ($paragraph_accordion_pane_fields as $field) {
-    $config = $config_factory->getEditable('field.field.node.localgov_accordion_pane.' . $field);
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_accordion_pane.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
   foreach ($paragraph_banner_primary_fields as $field) {
-    $config = $config_factory->getEditable('field.field.node.localgov_banner_primary.' . $field);
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_banner_primary.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
   foreach ($paragraph_banner_secondary_fields as $field) {
-    $config = $config_factory->getEditable('field.field.node.localgov_banner_secondary.' . $field);
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_banner_secondary.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
   foreach ($paragraph_block_view_fields as $field) {
-    $config = $config_factory->getEditable('field.field.node.localgov_block_view.' . $field);
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_block_view.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
   foreach ($paragraph_box_link_fields as $field) {
-    $config = $config_factory->getEditable('field.field.node.localgov_box_link.' . $field);
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_box_link.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
   foreach ($paragraph_box_link_listing_fields as $field) {
-    $config = $config_factory->getEditable('field.field.node.localgov_box_links_listing.' . $field);
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_box_links_listing.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
   foreach ($paragraph_callout_box_fields as $field) {
-    $config = $config_factory->getEditable('field.field.node.localgov_call_out_box.' . $field);
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_call_out_box.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
