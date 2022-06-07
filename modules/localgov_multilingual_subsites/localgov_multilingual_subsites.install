@@ -11,44 +11,272 @@
 function localgov_multilingual_subsites_install() {
   $config_factory = \Drupal::configFactory();
 
-  $subsites_overview_fields = [
+  // Node fields
+  $node_subsites_overview_fields = [
     'localgov_subsites_summary',
     'localgov_subsites_theme',
   ];
 
-  $subsites_page_fields = [
+  $node_subsites_page_fields = [
     'localgov_subsites_summary',
     'localgov_subsites_topic',
     'localgov_subsites_parent',
   ];
-  $subsites_overview_fields_false = [
+
+  // Nodes fields that we want to make "not" translatable (entity reference revisions fields)
+  $node_subsites_overview_fields_false = [
     'localgov_subsites_banner',
     'localgov_subsites_content',
   ];
 
-  $subsites_page_fields_false = [
+  $node_subsites_page_fields_false = [
     'localgov_subsites_banner',
     'localgov_subsites_content',
   ];
 
-  foreach ($subsites_overview_fields as $field) {
+  // Paragraphs fields
+  $paragraph_accordion_fields = [
+    'localgov_heading_level',
+    'localgov_paragraphs',
+    'localgov_title',
+  ];
+
+  $paragraph_accordion_pane_fields = [
+    'localgov_body_text',
+    'localgov_heading_level',
+    'localgov_title',
+  ];
+
+  $paragraph_banner_primary_fields = [
+    'localgov_image',
+    'localgov_subsites_banner_logo',
+    'localgov_subsites_banner_text',
+    'localgov_title',
+    'localgov_url',
+  ];
+  $paragraph_banner_secondary_fields = [
+    'localgov_image',
+  ];
+  $paragraph_block_view_fields = [
+    'localgov_embed_block_view',
+  ];
+  $paragraph_box_link_fields = [
+    'localgov_image',
+    'localgov_opens_in_a_new_window',
+    'localgov_link',
+  ];
+  $paragraph_box_link_listing_fields = [
+    'localgov_box_listing_theme',
+    'localgov_heading_level',
+    'localgov_paragraphs',
+    'localgov_title',
+  ];
+  $paragraph_callout_box_fields = [
+    'localgov_background_image',
+    'localgov_body_text',
+    'localgov_button',
+    'localgov_colour_theme',
+    'localgov_header_text',
+    'localgov_heading_level',
+    'localgov_opens_in_a_new_window',
+  ];
+  $paragraph_contact_fields = [
+    'localgov_contact_address',
+    'localgov_contact_url',
+    'localgov_contact_email',
+    'localgov_contact_facebook',
+    'localgov_contact_heading',
+    'localgov_contact_instagram',
+    'localgov_contact_location',
+    'localgov_contact_minicom',
+    'localgov_contact_mobile',
+    'localgov_contact_office_hours',
+    'localgov_contact_other_social',
+    'localgov_contact_other_url',
+    'localgov_contact_out_of_hours',
+    'localgov_contact_phone',
+    'localgov_contact_subheading',
+    'localgov_contact_twitter',
+  ];
+  $paragraph_documents_fields = [
+    'localgov_documents',
+  ];
+  $paragraph_fact_box_fields = [
+    'localgov_above_text',
+    'localgov_background',
+    'localgov_below_text',
+    'localgov_fact',
+  ];
+  $paragraph_featured_campaign_fields = [
+    'localgov_featured_campaign_image',
+    'localgov_featured_campaign_text',
+    'localgov_featured_campaign_link',
+  ];
+  $paragraph_featured_subsite_fields = [
+    'localgov_featured_subsite_image',
+    'localgov_featured_subsite_text',
+    'localgov_featured_subsite_link',
+  ];
+  $paragraph_featured_teaser_fields = [
+    'localgov_heading_level',
+    'localgov_image',
+    'localgov_link',
+    'localgov_text',
+    'localgov_title',
+  ];
+  $paragraph_featured_teasers_fields = [
+    'localgov_heading_level',
+    'localgov_paragraphs',
+    'localgov_title',
+  ];
+  $paragraph_from_library_fields = [
+    'field_reusable_paragraph',
+  ];
+  $paragraph_ia_block_fields = [
+    'localgov_ia_block_promoted',
+    'localgov_ia_block_title',
+    'localgov_ia_block_links',
+    'localgov_ia_block_link',
+  ];
+  $paragraph_image_fields = [
+    'localgov_caption',
+    'localgov_image',
+  ];
+  $paragraph_key_contact_item_fields = [
+    'localgov_colour_theme',
+    'localgov_contact_email',
+    'localgov_heading_level',
+    'localgov_image',
+    'localgov_title',
+    'localgov_link',
+  ];
+  $paragraph_key_contacts_fields = [
+    'localgov_heading_level',
+    'localgov_paragraphs',
+    'localgov_title',
+  ];
+
+  // Set node fields to be translatable
+  foreach ($node_subsites_overview_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_subsites_overview.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
-  foreach ($subsites_page_fields as $field) {
+  foreach ($node_subsites_page_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_subsites_page.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
-  foreach ($subsites_overview_fields_false as $field) {
+  foreach ($node_subsites_overview_fields_false as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_subsites_overview.' . $field);
     $config->set('translatable', false);
     $config->save(TRUE);
   }
-  foreach ($subsites_page_fields_false as $field) {
+  foreach ($node_subsites_page_fields_false as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_subsites_page.' . $field);
     $config->set('translatable', false);
+    $config->save(TRUE);
+  }
+
+  // Set paragraphs fields to be translatable
+  foreach ($paragraph_accordion_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_accordion.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_accordion_pane_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_accordion_pane.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_banner_primary_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_banner_primary.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_banner_secondary_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_banner_secondary.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_block_view_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_block_view.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_box_link_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_box_link.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_box_link_listing_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_box_links_listing.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_callout_box_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_call_out_box.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_contact_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_contact.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_documents_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_documents.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_fact_box_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_fact_box.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_featured_campaign_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_featured_campaign.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_featured_subsite_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_featured_subsite.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_featured_teaser_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_featured_teaser.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_featured_teasers_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_featured_teasers.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_from_library_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.from_library.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_ia_block_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_ia_block.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_image_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_image.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_key_contact_item_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_key_contact_item.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_key_contacts_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_key_contacts.' . $field);
+    $config->set('translatable', true);
     $config->save(TRUE);
   }
 }
