@@ -1,0 +1,18 @@
+uuid: 6c227c86-ba78-42ea-808f-2e4e0c6f1d5c
+langcode: ga
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.localgov_text
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.localgov_text
+target_entity_type_id: paragraph
+target_bundle: localgov_text
+default_langcode: site_default
+language_alterable: true

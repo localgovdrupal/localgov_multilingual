@@ -11,7 +11,7 @@
 function localgov_multilingual_services_install() {
   $config_factory = \Drupal::configFactory();
 
-  $services_landing_page_fields = [
+  $node_services_landing_page_fields = [
     'body',
     'localgov_address',
     'localgov_destinations',
@@ -29,13 +29,13 @@ function localgov_multilingual_services_install() {
     'localgov_twitter',
   ];
 
-  $services_sub_landing_page_fields = [
+  $node_services_sub_landing_page_fields = [
     'body',
     'localgov_topics',
     'localgov_services_parent',
   ];
   
-  $services_page_fields = [
+  $node_services_page_fields = [
     'body',
     'localgov_download_links',
     'localgov_services_parent',
@@ -45,17 +45,17 @@ function localgov_multilingual_services_install() {
     'localgov_address',
   ];
 
-  foreach ($services_landing_page_fields as $field) {
+  foreach ($node_services_landing_page_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_services_landing.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
-  foreach ($services_sub_landing_page_fields as $field) {
+  foreach ($node_services_sub_landing_page_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_services_sublanding.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);
   }
-  foreach ($services_page_fields as $field) {
+  foreach ($node_services_page_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_services_page.' . $field);
     $config->set('translatable', true);
     $config->save(TRUE);

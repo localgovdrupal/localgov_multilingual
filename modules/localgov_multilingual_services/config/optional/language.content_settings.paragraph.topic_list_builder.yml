@@ -1,0 +1,18 @@
+uuid: e5ed61f9-0ec0-4dc3-92ee-1eac151ff868
+langcode: ga
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.topic_list_builder
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.topic_list_builder
+target_entity_type_id: paragraph
+target_bundle: topic_list_builder
+default_langcode: site_default
+language_alterable: true
