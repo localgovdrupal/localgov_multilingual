@@ -45,6 +45,46 @@ function localgov_multilingual_services_install() {
     'localgov_address',
   ];
 
+  $paragraph_contact_fields = [
+    'localgov_contact_address',
+    'localgov_contact_url',
+    'localgov_contact_email',
+    'localgov_contact_facebook',
+    'localgov_contact_heading',
+    'localgov_contact_instagram',
+    'localgov_contact_location',
+    'localgov_contact_minicom',
+    'localgov_contact_mobile',
+    'localgov_contact_office_hours',
+    'localgov_contact_other_social',
+    'localgov_contact_other_url',
+    'localgov_contact_out_of_hours',
+    'localgov_contact_phone',
+    'localgov_contact_subheading',
+    'localgov_contact_twitter',
+  ];
+
+  $paragraph_image_fields = [
+    'localgov_caption',
+    'localgov_image',
+  ];
+
+  $paragraph_link_fields = [
+    'localgov_title',
+    'localgov_url',
+  ];
+
+  $paragraph_text_fields = [
+    'localgov_text',
+  ];
+
+  $paragraph_topic_list_builder_fields = [
+    'topic_list_header',
+    'topic_list_links',
+    'topic_list_term',
+  ];
+
+  // Set node fields to be translatable
   foreach ($node_services_landing_page_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_services_landing.' . $field);
     $config->set('translatable', true);
@@ -60,6 +100,39 @@ function localgov_multilingual_services_install() {
     $config->set('translatable', true);
     $config->save(TRUE);
   }
+  
+  // Set paragraphs fields to be translatable
+  foreach ($paragraph_contact_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_contact.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_image_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_image.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_link_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_link.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_text_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_text.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_topic_list_builder_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.topic_list_builder.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+  foreach ($paragraph_link_fields as $field) {
+    $config = $config_factory->getEditable('field.field.paragraph.localgov_link.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+
 }
 
 /**
