@@ -1,0 +1,4 @@
+localgov-multilingual:
+  css:
+    theme:
+      css/localgov-multilingual.css: {}

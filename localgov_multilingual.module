@@ -4,3 +4,12 @@
  * @file
  * Primary module hooks for LocalGov Services: Multilingual module.
  */
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function localgov_multilingual_preprocess_block(&$variables) {
+  if ($variables['derivative_plugin_id'] == 'language_interface') {
+    $variables['content']['#attached']['library'][] = 'localgov_multilingual/localgov-multilingual';
+  }
+}
