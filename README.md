@@ -6,6 +6,8 @@ It currently provides mulitinlgial capabilities to subsite overview and service 
 
 Originally developed by Tipperary County Council, Ireland, for Irish multilanguage. 
 
+Once enabled, translation capabilities will be available for Irish and Welsh.
+
 ## 
 
 ## Installation
@@ -13,7 +15,7 @@ Originally developed by Tipperary County Council, Ireland, for Irish multilangua
 To use this module wth LocalGov Drupal, download and enable as you would for other Drupal modules.
 
 ```
-composer reuqire drupal/localgov_multilingual
+composer reuqire localgovdrupal/localgov_multilingual
 drush en localgov_multilingual
 ```
 
