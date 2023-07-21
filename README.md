@@ -15,7 +15,7 @@ Once enabled, translation capabilities will be available for Irish and Welsh.
 To use this module wth LocalGov Drupal, download and enable as you would for other Drupal modules.
 
 ```
-composer reuqire localgovdrupal/localgov_multilingual
+composer require localgovdrupal/localgov_multilingual
 drush en localgov_multilingual
 ```
 
