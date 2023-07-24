@@ -24,4 +24,5 @@ drush en localgov_multilingual
 This project is currently maintained by: 
 
  - Mark Conroy https://github.com/markconroy
+ - Alan Burke https://github.com/alanburke
  - Finn Lewis https://github.com/finnlewis
