@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Localgov Multilingual: Events module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_events_install() {
+  $config_factory = \Drupal::configFactory();
+
+  $node_events_fields = [
+    'body',
+    'localgov_event_call_to_action',
+    'localgov_event_categories',
+    'localgov_event_date',
+    'localgov_event_image',
+    'localgov_event_location',
+    'localgov_event_locality',
+    'localgov_event_price',
+    'localgov_event_provider',
+    'localgov_event_venue',
+  ];
+
+  // Set node fields to be translatable
+  foreach ($node_events_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_event.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_events_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
