@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Localgov Multilingual: Directories module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_directories_install() {
+  $config_factory = \Drupal::configFactory();
+
+  $node_directory_channel_fields = [
+    'body',
+    'localgov_directory_channel_types',
+    'localgov_directory_facets_enable',
+    'localgov_services_parent',
+    'localgov_proximity_search_cfg',
+  ];
+
+  $node_directory_page_fields = [
+    'body',
+    'localgov_directory_job_title',
+    'localgov_directory_name',
+    'localgov_directory_phone',
+    'localgov_directory_channels',
+    'localgov_directory_address',
+    'localgov_directory_email',
+    'localgov_directory_website',
+    'localgov_directory_files',
+    'localgov_directory_title_sort',
+  ];
+
+  $node_directory_venue_fields = [
+    'body',
+    'localgov_directory_job_title',
+    'localgov_directory_name',
+    'localgov_directory_phone',
+    'localgov_directory_channels',
+    'localgov_directory_email',
+    'localgov_directory_website',
+    'localgov_directory_facets_select',
+    'localgov_directory_files',
+    'localgov_location',
+    'localgov_directory_title_sort',
+    'localgov_directory_notes',
+    'localgov_directory_opening_times',
+  ];
+
+  // Set node fields to be translatable
+  foreach ($node_directory_channel_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_directory.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+
+  foreach ($node_directory_page_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_directories_page.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+
+  foreach ($node_directory_venue_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_directories_venue.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_directories_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
