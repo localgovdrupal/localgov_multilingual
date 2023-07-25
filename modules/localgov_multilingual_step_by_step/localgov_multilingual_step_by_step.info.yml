@@ -1,0 +1,8 @@
+name: "Localgov Multilingual: Step-by-Step"
+type: module
+description: Add multilingual capabilities to the step-by-step content types.
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - localgovdrupal:localgov_step_by_step
+  - localgovdrupal:localgov_multilingual
