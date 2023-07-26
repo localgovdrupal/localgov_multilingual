@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Localgov Multilingual: Blogs module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_blogs_install() {
+  $config_factory = \Drupal::configFactory();
+
+  $node_blog_channel_fields = [
+    'body',
+    'localgov_blog_channel_featured',
+  ];
+
+  $node_blog_post_fields = [
+    'body',
+    'localgov_blog_author',
+    'localgov_blog_channel',
+    'localgov_blog_date',
+    'localgov_blog_categories',
+    'field_media_image',
+    'localgov_blog_related_posts',
+  ];
+
+  // Set node fields to be translatable
+  foreach ($node_blog_channel_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_blog_channel.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+
+  foreach ($node_blog_post_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_blog_post.' . $field);
+    $config->set('translatable', true);
+    $config->save(TRUE);
+  }
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_blogs_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
