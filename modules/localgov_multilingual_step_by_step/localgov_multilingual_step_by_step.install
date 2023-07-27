@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the Localgov Multilingual: Step-by-Step module.
+ * Install functions for the Localgov Multilingual: Step-by-Step module.
  */
 
 /**
@@ -26,16 +26,16 @@ function localgov_multilingual_localgov_step_by_step_install() {
     'localgov_step_section_title',
   ];
 
-  // Set node fields to be translatable
+  // Set node fields to be translatable.
   foreach ($node_step_by_step_overview_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_step_by_step_overview.' . $field);
-    $config->set('translatable', true);
+    $config->set('translatable', TRUE);
     $config->save(TRUE);
   }
 
   foreach ($node_step_by_step_page_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_step_by_step_page.' . $field);
-    $config->set('translatable', true);
+    $config->set('translatable', TRUE);
     $config->save(TRUE);
   }
 }
