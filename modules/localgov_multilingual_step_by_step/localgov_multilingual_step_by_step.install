@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Install functions for the Localgov Multilingual: Step-by-Step module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_localgov_step_by_step_install() {
+  $config_factory = \Drupal::configFactory();
+
+  $node_step_by_step_overview_fields = [
+    'body',
+    'localgov_services_parent',
+    'localgov_step_description',
+    'localgov_step_by_step_pages',
+    'localgov_topic_classified',
+  ];
+
+  $node_step_by_step_page_fields = [
+    'body',
+    'localgov_step_parent',
+    'localgov_step_summary',
+    'localgov_step_section_title',
+  ];
+
+  // Set node fields to be translatable.
+  foreach ($node_step_by_step_overview_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_step_by_step_overview.' . $field);
+    $config->set('translatable', TRUE);
+    $config->save(TRUE);
+  }
+
+  foreach ($node_step_by_step_page_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_step_by_step_page.' . $field);
+    $config->set('translatable', TRUE);
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_localgov_step_by_step_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
