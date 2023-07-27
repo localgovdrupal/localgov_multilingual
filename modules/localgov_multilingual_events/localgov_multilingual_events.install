@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the Localgov Multilingual: Events module.
+ * Install, update and uninstall functions for Localgov Multilingual: Events.
  */
 
 /**
@@ -24,10 +24,10 @@ function localgov_multilingual_events_install() {
     'localgov_event_venue',
   ];
 
-  // Set node fields to be translatable
+  // Set node fields to be translatable.
   foreach ($node_events_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_event.' . $field);
-    $config->set('translatable', true);
+    $config->set('translatable', TRUE);
     $config->save(TRUE);
   }
 }
