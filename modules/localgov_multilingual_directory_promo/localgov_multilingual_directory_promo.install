@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the Localgov Multilingual: Directory Promo module.
+ * Install / update functions for Localgov Multilingual: Directory Promo.
  */
 
 /**
@@ -28,10 +28,10 @@ function localgov_multilingual_directory_promo_install() {
     'localgov_directory_title_sort',
   ];
 
-  // Set node fields to be translatable
+  // Set node fields to be translatable.
   foreach ($node_directory_promo_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_directory_promo_page.' . $field);
-    $config->set('translatable', true);
+    $config->set('translatable', TRUE);
     $config->save(TRUE);
   }
 
