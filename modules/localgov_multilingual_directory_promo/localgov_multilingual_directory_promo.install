@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Install / update functions for Localgov Multilingual: Directory Promo.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_directory_promo_install() {
+  $config_factory = \Drupal::configFactory();
+
+  $node_directory_promo_fields = [
+    'body',
+    'localgov_directory_banner',
+    'localgov_paragraph_content',
+    'localgov_directory_job_title',
+    'localgov_directory_name',
+    'localgov_directory_phone',
+    'localgov_directory_channels',
+    'localgov_directory_address',
+    'localgov_directory_email',
+    'localgov_directory_website',
+    'localgov_directory_facets_select',
+    'localgov_directory_files',
+    'localgov_directory_standfirst',
+    'localgov_directory_title_sort',
+  ];
+
+  // Set node fields to be translatable.
+  foreach ($node_directory_promo_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_directory_promo_page.' . $field);
+    $config->set('translatable', TRUE);
+    $config->save(TRUE);
+  }
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_directory_promo_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}

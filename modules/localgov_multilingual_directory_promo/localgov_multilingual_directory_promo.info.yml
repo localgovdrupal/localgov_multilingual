@@ -1,0 +1,9 @@
+name: "Localgov Multilingual: Directory Promo"
+type: module
+description: Add multilingual capabilities to the directory promo content types.
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - localgovdrupal:localgov_directories_promo_page
+  - localgovdrupal:localgov_multilingual
+  - localgovdrupal:localgov_multilingual_subsites
