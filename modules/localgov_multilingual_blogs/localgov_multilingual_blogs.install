@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the Localgov Multilingual: Blogs module.
+ * Install, update and uninstall functions for Localgov Multilingual: Blogs..
  */
 
 /**
@@ -26,16 +26,16 @@ function localgov_multilingual_blogs_install() {
     'localgov_blog_related_posts',
   ];
 
-  // Set node fields to be translatable
+  // Set node fields to be translatable.
   foreach ($node_blog_channel_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_blog_channel.' . $field);
-    $config->set('translatable', true);
+    $config->set('translatable', TRUE);
     $config->save(TRUE);
   }
 
   foreach ($node_blog_post_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_blog_post.' . $field);
-    $config->set('translatable', true);
+    $config->set('translatable', TRUE);
     $config->save(TRUE);
   }
 
