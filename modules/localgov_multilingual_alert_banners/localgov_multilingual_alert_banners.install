@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for Localgov Multilingual: Alert Banners.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_alert_banners_install() {
+  $config_factory = \Drupal::configFactory();
+
+  $alert_banner_fields = [
+    'link',
+    'short_description',
+    'type_of_alert',
+    'visibility',
+  ];
+
+  // Set node fields to be translatable.
+  foreach ($alert_banner_fields as $field) {
+    $config = $config_factory->getEditable('field.field.localgov_alert_banner.localgov_alert_banner.' . $field);
+    $config->set('translatable', TRUE);
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_alert_banners_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
