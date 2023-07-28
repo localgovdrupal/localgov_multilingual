@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the Localgov Multilingual: Guides module.
+ * Install, update and uninstall functions for Localgov Multilingual: Guides.
  */
 
 /**
@@ -27,16 +27,16 @@ function localgov_multilingual_guides_install() {
     'localgov_guides_parent',
   ];
 
-  // Set node fields to be translatable
+  // Set node fields to be translatable.
   foreach ($node_guides_overview_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_guides_overview.' . $field);
-    $config->set('translatable', true);
+    $config->set('translatable', TRUE);
     $config->save(TRUE);
   }
 
   foreach ($node_guides_page_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_guides_page.' . $field);
-    $config->set('translatable', true);
+    $config->set('translatable', TRUE);
     $config->save(TRUE);
   }
 
