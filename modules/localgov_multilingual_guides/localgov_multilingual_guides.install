@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for Localgov Multilingual: Guides.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_guides_install() {
+  $config_factory = \Drupal::configFactory();
+
+  $node_guides_overview_fields = [
+    'body',
+    'localgov_guides_description',
+    'localgov_guides_pages',
+    'localgov_guides_section_title',
+    'localgov_guides_list_format',
+    'localgov_services_parent',
+    'localgov_topic_classified',
+  ];
+
+  $node_guides_page_fields = [
+    'body',
+    'localgov_guides_section_title',
+    'localgov_guides_parent',
+  ];
+
+  // Set node fields to be translatable.
+  foreach ($node_guides_overview_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_guides_overview.' . $field);
+    $config->set('translatable', TRUE);
+    $config->save(TRUE);
+  }
+
+  foreach ($node_guides_page_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_guides_page.' . $field);
+    $config->set('translatable', TRUE);
+    $config->save(TRUE);
+  }
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_guides_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
