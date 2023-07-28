@@ -1,0 +1,8 @@
+name: "Localgov Multilingual: Events"
+type: module
+description: Add multilingual capabilities to the event content types.
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - localgovdrupal:localgov_events
+  - localgovdrupal:localgov_multilingual

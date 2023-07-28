@@ -1,0 +1,8 @@
+name: "Localgov Multilingual: News"
+type: module
+description: Add multilingual capabilities to the news content types.
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - localgovdrupal:localgov_news
+  - localgovdrupal:localgov_multilingual
