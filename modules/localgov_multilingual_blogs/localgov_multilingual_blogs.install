@@ -8,7 +8,12 @@
 /**
  * Implements hook_install().
  */
-function localgov_multilingual_blogs_install() {
+function localgov_multilingual_blogs_install($is_syncing) {
+
+  if ($is_syncing) {
+    return;
+  }
+
   $config_factory = \Drupal::configFactory();
 
   $node_blog_channel_fields = [

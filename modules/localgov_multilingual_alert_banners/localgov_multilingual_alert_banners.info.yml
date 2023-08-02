@@ -1,0 +1,8 @@
+name: "Localgov Multilingual: Alert Banners"
+type: module
+description: Add multilingual capabilities to the alert banner types.
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - localgovdrupal:localgov_alert_banner
+  - localgovdrupal:localgov_multilingual

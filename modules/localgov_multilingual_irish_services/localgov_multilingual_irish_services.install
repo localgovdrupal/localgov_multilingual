@@ -8,8 +8,14 @@
 /**
  * Implements hook_install().
  */
-function localgov_multilingual_irish_services_install() {
+function localgov_multilingual_irish_services_install($is_syncing) {
+
+  if ($is_syncing) {
+    return;
+  }
+
   $config_factory = \Drupal::configFactory();
+
   $irish_services_landing_page_fields = [
     'localgov_irish_service_category',
     'localgov_irish_service_topic',

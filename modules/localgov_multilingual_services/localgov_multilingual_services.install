@@ -8,7 +8,12 @@
 /**
  * Implements hook_install().
  */
-function localgov_multilingual_services_install() {
+function localgov_multilingual_services_install($is_syncing) {
+
+  if ($is_syncing) {
+    return;
+  }
+
   $config_factory = \Drupal::configFactory();
 
   $node_services_landing_page_fields = [
