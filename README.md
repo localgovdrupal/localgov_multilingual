@@ -2,7 +2,7 @@
 
 Adds multilingual functionality to LocalGov Drupal sites. 
 
-It currently provides mulitinlgial capabilities to subsite overview and service pages. 
+It currently provides multilingual capabilities to subsite overview and service pages. 
 
 Originally developed by Tipperary County Council, Ireland, for Irish multilanguage. 
 
