@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for Localgov Multilingual: News.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_news_install($is_syncing) {
+
+  if ($is_syncing) {
+    return;
+  }
+
+  $config_factory = \Drupal::configFactory();
+
+  $node_newsroom_fields = [
+    'localgov_newsroom_featured',
+  ];
+
+  $node_news_article_fields = [
+    'body',
+    'localgov_news_categories',
+    'localgov_news_date',
+    'field_media_image',
+    'localgov_newsroom',
+    'localgov_news_related',
+  ];
+
+  // Set node fields to be translatable.
+  foreach ($node_newsroom_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_newsroom.' . $field);
+    $config->set('translatable', TRUE);
+    $config->save(TRUE);
+  }
+  foreach ($node_news_article_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_news_article.' . $field);
+    $config->set('translatable', TRUE);
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_news_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}

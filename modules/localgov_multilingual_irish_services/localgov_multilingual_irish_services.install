@@ -2,14 +2,20 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the Localgov Multilingual: Services module.
+ * Install, update and uninstall functions for Localgov Multilingual: Services.
  */
 
 /**
  * Implements hook_install().
  */
-function localgov_multilingual_irish_services_install() {
+function localgov_multilingual_irish_services_install($is_syncing) {
+
+  if ($is_syncing) {
+    return;
+  }
+
   $config_factory = \Drupal::configFactory();
+
   $irish_services_landing_page_fields = [
     'localgov_irish_service_category',
     'localgov_irish_service_topic',
@@ -29,7 +35,7 @@ function localgov_multilingual_irish_services_install() {
     'localgov_irish_service_reference',
     'localgov_irish_service_lgma_id',
   ];
-  
+
   $irish_services_page_fields = [
     'localgov_irish_service_category',
     'localgov_irish_service_topic',
@@ -42,17 +48,17 @@ function localgov_multilingual_irish_services_install() {
 
   foreach ($irish_services_landing_page_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_services_landing.' . $field);
-    $config->set('translatable', true);
+    $config->set('translatable', TRUE);
     $config->save(TRUE);
   }
   foreach ($irish_services_sub_landing_page_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_services_sublanding.' . $field);
-    $config->set('translatable', true);
+    $config->set('translatable', TRUE);
     $config->save(TRUE);
   }
   foreach ($irish_services_page_fields as $field) {
     $config = $config_factory->getEditable('field.field.node.localgov_services_page.' . $field);
-    $config->set('translatable', true);
+    $config->set('translatable', TRUE);
     $config->save(TRUE);
   }
 }

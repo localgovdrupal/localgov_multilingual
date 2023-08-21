@@ -1,0 +1,8 @@
+name: "Localgov Multilingual: Directory Organisation"
+type: module
+description: Add multilingual capabilities to the directory organisation content type.
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - localgovdrupal:localgov_directories_org
+  - localgovdrupal:localgov_multilingual

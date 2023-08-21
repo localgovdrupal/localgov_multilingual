@@ -1,0 +1,8 @@
+name: "Localgov Multilingual: Guides"
+type: module
+description: Add multilingual capabilities to the guides content types.
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - localgovdrupal:localgov_guides
+  - localgovdrupal:localgov_multilingual

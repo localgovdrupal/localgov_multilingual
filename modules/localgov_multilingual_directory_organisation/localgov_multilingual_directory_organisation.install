@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Install functions for Localgov Multilingual: Directory Organisation.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_directory_organisation_install($is_syncing) {
+
+  if ($is_syncing) {
+    return;
+  }
+
+  $config_factory = \Drupal::configFactory();
+
+  $node_directory_organisation_fields = [
+    'body',
+    'localgov_directory_channels',
+    'localgov_directory_email',
+    'localgov_directory_facets_select',
+    'localgov_directory_files',
+    'localgov_location',
+    'localgov_directory_phone',
+    'localgov_directory_notes',
+    'localgov_directory_website',
+  ];
+
+  // Set node fields to be translatable.
+  foreach ($node_directory_organisation_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_directories_org.' . $field);
+    $config->set('translatable', TRUE);
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_directory_organisation_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
