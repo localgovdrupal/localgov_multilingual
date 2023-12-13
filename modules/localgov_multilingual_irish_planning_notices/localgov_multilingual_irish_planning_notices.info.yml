@@ -1,0 +1,8 @@
+name: "Localgov Multilingual: Irish Planning Notices"
+type: module
+description: Add multilingual capabilities to the Irish Planning Notices content type.
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - localgovdrupal:localgov_irish_planning_notices
+  - localgovdrupal:localgov_multilingual
