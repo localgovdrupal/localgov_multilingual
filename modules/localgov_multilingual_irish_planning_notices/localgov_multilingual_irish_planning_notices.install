@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for LGD Multilingual: Planning.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_multilingual_irish_planning_notices_install($is_syncing) {
+
+  if ($is_syncing) {
+    return;
+  }
+
+  $config_factory = \Drupal::configFactory();
+
+  $node_irish_planning_notices_fields = [
+    'localgov_pnl_date',
+    'localgov_pnl_files',
+    'localgov_pnl_week_number',
+    'localgov_pnl_year',
+  ];
+
+  // Set node fields to be translatable.
+  foreach ($node_irish_planning_notices_fields as $field) {
+    $config = $config_factory->getEditable('field.field.node.localgov_planning_notices_list.' . $field);
+    $config->set('translatable', TRUE);
+    $config->save(TRUE);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function localgov_multilingual_irish_planning_notices_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
