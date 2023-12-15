@@ -149,7 +149,7 @@ function localgov_multilingual_services_uninstall() {
 /**
  * Delete config for field(s) that do not exist.
  */
-function localgov_multilingual_services_update_8001() {
+function localgov_multilingual_services_update_9001() {
   // This module in hook_install() sets `localgov_address` to be translatable
   // on the localgov_services_page content type.
   // However, this field does not exist on that content type. This causes an

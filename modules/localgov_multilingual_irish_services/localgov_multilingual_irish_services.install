@@ -69,7 +69,7 @@ function localgov_multilingual_irish_services_uninstall() {
 /**
  * Implements hook_update_N().
  */
-function localgov_multilingual_irish_services_update_8001() {
+function localgov_multilingual_irish_services_update_9001() {
   // This module in hook_install() sets `localgov_irish_service_lgma_id and
   // `localgov_irish_service_reference` to be translatable on
   // on the localgov_services_landing and localgov_services_sublanding content
