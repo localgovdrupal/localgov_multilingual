@@ -87,8 +87,8 @@ function localgov_multilingual_irish_services_update_9001() {
   ];
 
   foreach ($fields_to_delete as $field) {
-    // Check if config exists for this field
-    // Delete that config
+    // Check if config exists for this field.
+    // Delete that config.
     $config = $config_factory->getEditable($field);
     if ($config) {
       $config->delete();
