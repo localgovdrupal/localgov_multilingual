@@ -47,7 +47,6 @@ function localgov_multilingual_services_install($is_syncing) {
     'localgov_related_links',
     'localgov_common_tasks',
     'localgov_topic_classified',
-    'localgov_address',
   ];
 
   $paragraph_contact_fields = [
@@ -145,4 +144,30 @@ function localgov_multilingual_services_install($is_syncing) {
  */
 function localgov_multilingual_services_uninstall() {
   \Drupal::messenger()->addStatus(__FUNCTION__);
+}
+
+/**
+ * Delete config for field(s) that do not exist.
+ */
+function localgov_multilingual_services_update_9001() {
+  // This module in hook_install() sets `localgov_address` to be translatable
+  // on the localgov_services_page content type.
+  // However, this field does not exist on that content type. This causes an
+  // issue when any update needs to run against all fields, such as
+  // localgov_geo_update_update_8003().
+  // This update removes the field from the config so that it does not cause
+  // this issue.
+  $config_factory = \Drupal::configFactory();
+  $fields_to_delete = [
+    'field.field.node.localgov_services_page.localgov_address',
+  ];
+
+  foreach ($fields_to_delete as $field) {
+    // Check if config exists for this field.
+    // Delete that config.
+    $config = $config_factory->getEditable($field);
+    if ($config) {
+      $config->delete();
+    }
+  }
 }

@@ -22,8 +22,6 @@ function localgov_multilingual_irish_services_install($is_syncing) {
     'localgov_irish_service_municipal',
     'localgov_irish_service_type',
     'localgov_irish_service_user_type',
-    'localgov_irish_service_reference',
-    'localgov_irish_service_lgma_id',
   ];
 
   $irish_services_sub_landing_page_fields = [
@@ -32,8 +30,6 @@ function localgov_multilingual_irish_services_install($is_syncing) {
     'localgov_irish_service_municipal',
     'localgov_irish_service_type',
     'localgov_irish_service_user_type',
-    'localgov_irish_service_reference',
-    'localgov_irish_service_lgma_id',
   ];
 
   $irish_services_page_fields = [
@@ -68,4 +64,34 @@ function localgov_multilingual_irish_services_install($is_syncing) {
  */
 function localgov_multilingual_irish_services_uninstall() {
   \Drupal::messenger()->addStatus(__FUNCTION__);
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function localgov_multilingual_irish_services_update_9001() {
+  // This module in hook_install() sets `localgov_irish_service_lgma_id and
+  // `localgov_irish_service_reference` to be translatable on
+  // on the localgov_services_landing and localgov_services_sublanding content
+  // types. However, these fields do not exist on those content types.
+  // This causes an issue when any update needs to run against all fields,
+  // such as localgov_geo_update_update_8003().
+  // This update removes these fields from the config so that
+  // they does not cause this issue.
+  $config_factory = \Drupal::configFactory();
+  $fields_to_delete = [
+    'field.field.node.localgov_services_landing.localgov_irish_service_lgma_id',
+    'field.field.node.localgov_services_landing.localgov_irish_service_reference',
+    'field.field.node.localgov_services_sublanding.localgov_irish_service_lgma_id',
+    'field.field.node.localgov_services_sublanding.localgov_irish_service_reference',
+  ];
+
+  foreach ($fields_to_delete as $field) {
+    // Check if config exists for this field.
+    // Delete that config.
+    $config = $config_factory->getEditable($field);
+    if ($config) {
+      $config->delete();
+    }
+  }
 }
