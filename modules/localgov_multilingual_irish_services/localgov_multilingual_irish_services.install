@@ -72,12 +72,12 @@ function localgov_multilingual_irish_services_uninstall() {
 function localgov_multilingual_irish_services_update_8001() {
   // This module in hook_install() sets `localgov_irish_service_lgma_id and
   // `localgov_irish_service_reference` to be translatable on
-  // on the localgov_services_landing and localgov_services_sublanding content types.
-  // However, these fields do not exist on those content types. This causes an
-  // issue when any update needs to run against all fields, such as
-  // localgov_geo_update_update_8003().
-  // This update removes these fields from the config so that they does not cause
-  // this issue.
+  // on the localgov_services_landing and localgov_services_sublanding content
+  // types. However, these fields do not exist on those content types.
+  // This causes an issue when any update needs to run against all fields,
+  // such as localgov_geo_update_update_8003().
+  // This update removes these fields from the config so that
+  // they does not cause this issue.
   $config_factory = \Drupal::configFactory();
   $fields_to_delete = [
     'field.field.node.localgov_services_landing.localgov_irish_service_lgma_id',
@@ -87,8 +87,8 @@ function localgov_multilingual_irish_services_update_8001() {
   ];
 
   foreach ($fields_to_delete as $field) {
-    // check if config exists for this field
-    // delete that config
+    // Check if config exists for this field
+    // Delete that config
     $config = $config_factory->getEditable($field);
     if ($config) {
       $config->delete();
